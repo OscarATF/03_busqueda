@@ -10,7 +10,7 @@ int secuencialDes(monomio[],int,monomio);
 
 int main() {
 	
-	int n;
+	int n,pos;
 	const int tam=50;
 	monomio ter[tam],dato;
 	
@@ -37,8 +37,8 @@ int main() {
 	cout<<"Ingrese el coeficiente: "; cin>>dato.coef;
 	cout<<"Ingrese el exponente: "; cin>>dato.exp;
 	cout<<endl;
-	
-	if (secuencialDes(ter,n,dato)!=-1) {
+	pos=secuencialDes(ter,n,dato);
+	if (pos!=-1) {
 		cout<<"Monomio encontrado en el indice: "<<secuencialDes(ter,n,dato);
 	} else {
 		cout<<"El monomio no ha sido encontrado"<<endl;
@@ -47,10 +47,10 @@ int main() {
 }
 
 //Busqueda secuencial desordenada
-int secuencialDes(monomio A[],int n,monomio dato) {
+int secuencialDes(monomio t[],int n,monomio x) {
 	int pos=-1;
 	int i=0;
-	while (i<n && (A[i].coef!=dato.coef && A[i].exp!=dato.exp)) {
+	while (i<n && (t[i].coef!=x.coef || t[i].exp!=x.exp)) {
 		i++;
 	}
 	if (i<n) {
